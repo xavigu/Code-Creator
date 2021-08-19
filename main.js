@@ -1,6 +1,21 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+const getEl = selector => document.querySelector(selector)
+
+const $html = getEl('#html')
+const $css = getEl('#css')
+const $js = getEl('#js')
+
+$html.addEventListener('input', e => {
+  console.log(e.target.value)
+})
+
+$js.addEventListener('input', e => {
+  console.log(e.target.value)
+})
+
+$css.addEventListener('input', e => {
+  console.log(e.target.value)
+})
+
+
