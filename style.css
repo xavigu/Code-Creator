@@ -21,11 +21,23 @@ body {
   box-sizing: inherit;
 }
 
-section {
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 4px 1fr;
+  grid-template-columns: 1fr 4px 1fr;
   height: 100vh;
+}
+
+.vertical-gutter {
+  grid-area: 1/2/4/2;
+  background-color:#fff;
+  cursor: col-resize;
+}
+
+.horizontal-gutter {
+  grid-area: 2/1/2/4;
+  background-color:#fff;
+  cursor: row-resize;
 }
 
 iframe {
@@ -37,12 +49,17 @@ iframe {
 
 textarea {
   background-color: #333;
-  border: 0;
+  box-shadow: 0 0 0 .1px rgba(255, 255, 255, .3);
   color: #fff;
   font-family: monospace;
-  font-size: 24px;
+  font-size: 18px;
   height: 100%;
   margin: 1px;
+  padding: 24px;
   resize: none;
   width: 100%;
+}
+
+textarea:focus{
+  outline: 0;
 }

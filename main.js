@@ -1,6 +1,19 @@
 import './style.css'
+import Split from 'split-grid'
 
 const getEl = selector => document.querySelector(selector)
+
+Split({
+    columnGutters: [{
+        track: 1,
+        element: getEl('.vertical-gutter'),
+    }],
+    rowGutters: [{
+        track: 1,
+        element: getEl('.horizontal-gutter'),
+    }]
+})
+
 
 const $html = getEl('#html')
 const $css = getEl('#css')

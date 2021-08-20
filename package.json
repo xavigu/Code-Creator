@@ -6,6 +6,9 @@
     "build": "vite build",
     "serve": "vite preview"
   },
+  "dependencies": {
+    "split-grid": "^1.0.11"
+  },
   "devDependencies": {
     "vite": "^2.4.4"
   }
