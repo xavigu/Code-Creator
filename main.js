@@ -24,6 +24,22 @@ $html.addEventListener('input', update)
 $js.addEventListener('input', update)
 $css.addEventListener('input', update)
 
+function init(){
+  const { pathname } = window.location
+  const [rawHtml, rawJs, rawCss] = pathname.slice(1).split('%7C')
+
+  const html = window.atob(rawHtml)
+  const js = window.atob(rawJs)
+  const css = window.atob(rawCss)
+
+  $html.value = html;
+  $js.value = js;
+  $css.value = css;
+
+  const htmlForPreview = createHtml({html, js, css})
+  $iframe.setAttribute('srcdoc', htmlForPreview)
+}
+
 function update() {
   const html = $html.value;
   const js = $js.value;
@@ -38,7 +54,6 @@ function update() {
 }
 
 const createHtml = ({html, js, css}) => {
-
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -48,12 +63,13 @@ const createHtml = ({html, js, css}) => {
       </style>
     </head>
     <body>
+      ${html}
       <script>
         ${js}
       </script>
-      ${html}
     </body>
   </html>
 `
-
 }
+
+init()
