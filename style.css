@@ -48,8 +48,10 @@ iframe {
 }
 
 textarea {
-  background-color: #333;
+  background-color: #333 !important;
+  background-repeat: none;
   box-shadow: 0 0 0 .1px rgba(255, 255, 255, .3);
+  border: none;
   color: #fff;
   font-family: monospace;
   font-size: 18px;
@@ -62,4 +64,22 @@ textarea {
 
 textarea:focus{
   outline: 0;
+}
+
+#html {
+  background: url('assets/html_logo.svg') no-repeat;
+  background-size: 36px;
+  background-position: calc(100% - 22px) calc(100% - 16px);
+}
+
+#js {
+  background: url('assets/js_logo.svg') no-repeat;
+  background-size: 36px;
+  background-position: calc(100% - 22px) calc(100% - 16px);
+}
+
+#css {
+  background: url('assets/css_logo.svg') no-repeat;
+  background-size: 36px;
+  background-position: calc(100% - 22px) calc(100% - 16px);
 }
