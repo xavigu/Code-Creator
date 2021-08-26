@@ -21,20 +21,23 @@ const $js = getEl('#js')
 const $iframe = getEl('iframe')
 
 $html.addEventListener('input', update)
-
 $js.addEventListener('input', update)
-
 $css.addEventListener('input', update)
 
 function update() {
-  const html = createHtml()
-  $iframe.setAttribute('srcdoc', html)
-}
-
-const createHtml = () => {
   const html = $html.value;
   const js = $js.value;
   const css = $css.value;
+
+  const hashedCode = `${window.btoa(html)}|${window.btoa(js)}|${window.btoa(css)}`
+
+  window.history.replaceState(null, null, `/${hashedCode}`)
+
+  const htmlForPreview = createHtml({html, js, css})
+  $iframe.setAttribute('srcdoc', htmlForPreview)
+}
+
+const createHtml = ({html, js, css}) => {
 
   return `
   <!DOCTYPE html>
