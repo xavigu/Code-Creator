@@ -1,5 +1,6 @@
 import './style.css'
 import Split from 'split-grid'
+import { encode, decode } from 'js-base64'
 
 const getEl = selector => document.querySelector(selector)
 
@@ -28,9 +29,9 @@ function init(){
   const { pathname } = window.location
   const [rawHtml, rawJs, rawCss] = pathname.slice(1).split('%7C')
 
-  const html = window.atob(rawHtml)
-  const js = window.atob(rawJs)
-  const css = window.atob(rawCss)
+  const html = decode(rawHtml)
+  const js = decode(rawJs)
+  const css = decode(rawCss)
 
   $html.value = html;
   $js.value = js;
@@ -45,7 +46,7 @@ function update() {
   const js = $js.value;
   const css = $css.value;
 
-  const hashedCode = `${window.btoa(html)}|${window.btoa(js)}|${window.btoa(css)}`
+  const hashedCode = `${encode(html)}|${encode(js)}|${encode(css)}`
 
   window.history.replaceState(null, null, `/${hashedCode}`)
 
